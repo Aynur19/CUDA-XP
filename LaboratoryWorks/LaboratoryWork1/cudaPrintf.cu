@@ -261,7 +261,7 @@ std::tuple<int, dim3, dim3, int> setParamsGPU()
         params = std::tuple<int, dim3, dim3, int>(16384, dim3(32, 32, 16), dim3(1, 1, 1), 21);
         break;
     case 22:
-        params = std::tuple<int, dim3, dim3, int>(65536, dim3(4, 4, 4), dim3(16, 8, 8), 22);
+        params = std::tuple<int, dim3, dim3, int>(65536, dim3(4, 4, 4), dim3(16, 8, 8), 22); ////
         break;
     case 23:
         params = std::tuple<int, dim3, dim3, int>(65536, dim3(8, 8, 4), dim3(8, 8, 4), 23);
