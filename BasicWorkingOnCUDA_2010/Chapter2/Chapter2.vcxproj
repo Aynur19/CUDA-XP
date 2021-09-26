@@ -83,6 +83,8 @@
       <CudaRuntime Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Static</CudaRuntime>
       <DisableAnalyzeExternal Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DisableAnalyzeExternal>
     </CudaCompile>
+    <CudaCompile Include="cudaFeatureRequest.cu" />
+    <CudaCompile Include="cudaMatrixTranspose.cu" />
     <CudaCompile Include="cudaRuntimeAPI.cu">
       <FileType>Document</FileType>
       <CudaRuntime Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Static</CudaRuntime>
@@ -91,6 +93,7 @@
     <ClInclude Include="vector.cu">
       <FileType>Document</FileType>
     </ClInclude>
+    <CudaCompile Include="cudaSimpleTableBuilding.cu" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
