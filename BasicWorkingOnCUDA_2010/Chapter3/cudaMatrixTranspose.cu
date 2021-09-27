@@ -2,6 +2,8 @@
 #include <cuda_runtime.h>
 #include <device_launch_parameters.h>
 
+#include "chapter3.h"
+
 __global__ void __cuMatrixSquareTranspose(float* inData, float* outData, int n) {
 	unsigned int xIndex = blockDim.x * blockIdx.x + threadIdx.x;
 	unsigned int yIndex = blockDim.y * blockIdx.y + threadIdx.y;
@@ -20,21 +22,9 @@ extern "C" void cuMatrixSquareTranspose() {
 	float* inData = new float[n * n];
 	float* outData = new float[n * n];
 
-	for (int i = 0; i < n * n; i++)
-	{
-		inData[i] = (float)i;
-	}
+	numbersInit(inData, n * n);
 
-	for (int i = 0; i < n; i++)
-	{
-		for (int k = 0; k < n; k++)
-		{
-			printf("|%.f\t", inData[i * n + k]);
-		}
-		printf("|\n");
-	}
-
-	printf("--------------------------------------------------------------\n");
+	printMatrix(inData, n, "Matrix A");
 
 	float* devInData;
 	float* devOutData;
@@ -55,12 +45,5 @@ extern "C" void cuMatrixSquareTranspose() {
 	cudaFree(devInData);
 	cudaFree(devOutData);
 
-	for (int i = 0; i < n; i++)
-	{
-		for (int k = 0; k < n; k++)
-		{
-			printf("|%.f\t", outData[i * n + k]);
-		}
-		printf("|\n");
-	}
+	printMatrix(outData, n, "Matrix B");
 }

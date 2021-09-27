@@ -1,12 +1,10 @@
 #include <stdio.h>
+//#include "chapter2.h"
 
 extern "C" void cuVectorAdd_RAPI(const int blockSize, const int numBlocks, const int numItems);
-//extern "C" void cuVectorAdd_DAPI(const int blockSize, const int numBlocks, const int numItems);
-
+////extern "C" void cuVectorAdd_DAPI(const int blockSize, const int numBlocks, const int numItems);
+//
 extern "C" void cuGetGpuFeatures();
-extern "C" void cuBuildTable(float* res, int n, float step);
-extern "C" void cuMatrixSquareTranspose();
-extern "C" void cuSquareMatricesMultiplication();
 
 int main(int argc, char* argv[]) {
 
@@ -16,9 +14,6 @@ int main(int argc, char* argv[]) {
 	printf("  0: End of the program\n");
 	printf("  1: Vector addition\n");
 	printf("  2: Derivation of the characteristics and capabilities of the GPU\n");
-	printf("  3: Building a table by function values with a given step\n");
-	printf("  4: Square Matrix Transposing\n");
-	printf("  5: Square Matrix Multiplication\n");
 
 
 	printf("Enter the command: ");
@@ -42,21 +37,6 @@ int main(int argc, char* argv[]) {
 			}
 			case 2: {
 				cuGetGpuFeatures();
-				break;
-			}
-			case 3: {
-				int n = 256 * 2;
-				float* res = new float[n];
-				float step = 0.05;
-				cuBuildTable(res, n, step);
-				break;
-			}
-			case 4: {
-				cuMatrixSquareTranspose();
-				break;
-			}
-			case 5: {
-				cuSquareMatricesMultiplication();
 				break;
 			}
 			default: {

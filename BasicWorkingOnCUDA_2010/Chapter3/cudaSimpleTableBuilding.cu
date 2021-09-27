@@ -3,6 +3,8 @@
 #include <device_launch_parameters.h>
 #include <cassert>
 
+#include "chapter3.h"
+
 // ядро осуществляе заполнение массива
 __global__ void tableKernel(float* devPtr, float step) {
 	// получение глобального адреса нити
@@ -37,7 +39,6 @@ extern "C" void cuBuildTable(float* res, int n, float step) {
 
 	for (int i = 0; i < n; i++)
 	{
-
 		printf("Item %d: sin(sqrt(%.3f)) = %.3f\n", i, step * i, res[i]);
 	}
 }

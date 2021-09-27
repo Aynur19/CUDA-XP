@@ -2,7 +2,7 @@
 #include <cuda_runtime.h>
 #include <device_launch_parameters.h>
 
-#include "helper.h"
+#include "chapter2.h"
 
 __global__ void __cuVectorAdd(float* vec1, float* vec2, float* vecSum) {
 	int index = threadIdx.x + blockIdx.x * blockDim.x;

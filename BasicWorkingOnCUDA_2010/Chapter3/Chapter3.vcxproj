@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F0F1BE4D-B776-4FF4-894B-68E0BF04693B}</ProjectGuid>
-    <RootNamespace>Chapter2</RootNamespace>
+    <ProjectGuid>{83A56577-62F6-4661-874B-FB0534B57428}</ProjectGuid>
+    <RootNamespace>Chapter3</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -47,8 +47,6 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalHeaderUnitDependencies>
-      </AdditionalHeaderUnitDependencies>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -57,12 +55,7 @@
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
-      <Keep>false</Keep>
     </CudaCompile>
-    <CudaLink>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
-    </CudaLink>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -84,30 +77,17 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="cudaDriverAPI.cu">
-      <FileType>Document</FileType>
-      <CudaRuntime Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Static</CudaRuntime>
-      <DisableAnalyzeExternal Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DisableAnalyzeExternal>
-    </CudaCompile>
-    <CudaCompile Include="cudaFeatureRequest.cu" />
-    <CudaCompile Include="cudaRuntimeAPI.cu">
-      <FileType>Document</FileType>
-      <CudaRuntime Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Static</CudaRuntime>
-    </CudaCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="cpp.hint" />
+    <CudaCompile Include="cudaMatrixTranspose.cu" />
+    <CudaCompile Include="cudaSimpleTableBuilding.cu" />
+    <CudaCompile Include="cudaSquareMatricesMultiplication.cu" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\_common\helper.cpp" />
-    <ClCompile Include="main.cpp">
-      <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </AdditionalModuleDependencies>
-    </ClCompile>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\_common\helper.h" />
-    <ClInclude Include="chapter2.h" />
+    <ClInclude Include="chapter3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
