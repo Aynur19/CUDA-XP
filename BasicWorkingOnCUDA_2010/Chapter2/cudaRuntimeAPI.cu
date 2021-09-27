@@ -1,8 +1,14 @@
 ﻿// Сложение векторов через CUDA runtime API
 #include <cuda_runtime.h>
+#include <device_launch_parameters.h>
 
-#include "vector.cu"
 #include "helper.h"
+
+__global__ void __cuVectorAdd(float* vec1, float* vec2, float* vecSum) {
+	int index = threadIdx.x + blockIdx.x * blockDim.x;
+
+	vecSum[index] = vec1[index] + vec2[index];
+}
 
 extern "C" void cuVectorAdd_RAPI(const int blockSize, const int numBlocks, const int numItems)
 {
@@ -32,7 +38,7 @@ extern "C" void cuVectorAdd_RAPI(const int blockSize, const int numBlocks, const
 	cudaMemcpy(vecDev2, vec2, numItems * sizeof(float), cudaMemcpyHostToDevice);
 
 	// Запуск ядра
-	vectorAdd<<<numBlocks, blockSize>>>(vecDev1, vecDev2, vecSumDev);
+	__cuVectorAdd<<<numBlocks, blockSize>>>(vecDev1, vecDev2, vecSumDev);
 
 	// Копирование результата в память CPU
 	cudaMemcpy((void*)vecSum, vecSumDev, numItems * sizeof(float), cudaMemcpyDeviceToHost);

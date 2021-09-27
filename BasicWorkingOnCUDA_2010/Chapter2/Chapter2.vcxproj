@@ -90,15 +90,14 @@
       <CudaRuntime Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Static</CudaRuntime>
     </CudaCompile>
     <ClInclude Include="helper.h" />
-    <ClInclude Include="vector.cu">
-      <FileType>Document</FileType>
-    </ClInclude>
     <CudaCompile Include="cudaSimpleTableBuilding.cu" />
+    <CudaCompile Include="cudaSquareMatricesMultiplication.cu" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="helper.cpp" />
     <ClCompile Include="main.cpp">
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </AdditionalModuleDependencies>
