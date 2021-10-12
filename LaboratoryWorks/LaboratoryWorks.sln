@@ -8,9 +8,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B2948D26-842E-432D-8FEA-00916D951586}"
 	ProjectSection(SolutionItems) = preProject
 		_common\deviceQuery.h = _common\deviceQuery.h
+		..\_common\helper.h = ..\_common\helper.h
 		_common\helper_cuda.h = _common\helper_cuda.h
 		_common\helper_string.h = _common\helper_string.h
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LaboratoryWork2", "LaboratoryWork2\LaboratoryWork2.vcxproj", "{3A0F7E3E-A891-4144-9DEB-B49AF2244AB6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Examples", "Examples\Examples.vcxproj", "{ED995ABF-4E32-4877-BCDE-56EE18BFA550}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +27,14 @@ Global
 		{E805EEA3-0D4D-4D8E-B710-A2A4D352F4E5}.Debug|x64.Build.0 = Debug|x64
 		{E805EEA3-0D4D-4D8E-B710-A2A4D352F4E5}.Release|x64.ActiveCfg = Release|x64
 		{E805EEA3-0D4D-4D8E-B710-A2A4D352F4E5}.Release|x64.Build.0 = Release|x64
+		{3A0F7E3E-A891-4144-9DEB-B49AF2244AB6}.Debug|x64.ActiveCfg = Debug|x64
+		{3A0F7E3E-A891-4144-9DEB-B49AF2244AB6}.Debug|x64.Build.0 = Debug|x64
+		{3A0F7E3E-A891-4144-9DEB-B49AF2244AB6}.Release|x64.ActiveCfg = Release|x64
+		{3A0F7E3E-A891-4144-9DEB-B49AF2244AB6}.Release|x64.Build.0 = Release|x64
+		{ED995ABF-4E32-4877-BCDE-56EE18BFA550}.Debug|x64.ActiveCfg = Debug|x64
+		{ED995ABF-4E32-4877-BCDE-56EE18BFA550}.Debug|x64.Build.0 = Debug|x64
+		{ED995ABF-4E32-4877-BCDE-56EE18BFA550}.Release|x64.ActiveCfg = Release|x64
+		{ED995ABF-4E32-4877-BCDE-56EE18BFA550}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

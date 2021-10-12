@@ -1,6 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <math.h>
 #include "helper.h"
 
 // Заполнение массива случайными числами
@@ -9,6 +6,16 @@ extern void randomInit(float* randArray, int n) {
 		randArray[i] = rand() / (float)RAND_MAX;
 	}
 }
+
+void randomInitF3(float3* vec, int n) {
+	for (int i = 0; i < n; i++)
+	{
+		vec[i].x = rand() / (float)RAND_MAX - 0.5f;
+		vec[i].y = rand() / (float)RAND_MAX - 0.5f;
+		vec[i].z = rand() / (float)RAND_MAX - 0.5f;
+	}
+}
+
 // Проверка результата
 extern void vecAddValidate(float* vec1, float* vec2, float* vecSum, int numItems) {
 	for (int i = 0; i < numItems; i++) {

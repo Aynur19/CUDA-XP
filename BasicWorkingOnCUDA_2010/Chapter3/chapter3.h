@@ -9,4 +9,6 @@ extern "C" void cuBuildTable(float* res, int n, float step);
 
 extern "C" void cuSquareMatricesMultiplication();
 
-#endif // !__CHAPTER2_H__
+extern "C" void cuIntegrateBodies();
+
+#endif // !__CHAPTER3_H__

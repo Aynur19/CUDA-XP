@@ -4,7 +4,7 @@ extern "C" void cudaPrintNumbers();
 
 int main(int argc, char* argv)
 {
-    unsigned int cmd = 0;
+    int cmd = -1;
 	//printf("Enter one of the following commands:\n");
 	//printf("  0: Get information about the GPU\n");
 	//printf("  4: Task 4. Print numbers\n");
@@ -23,7 +23,7 @@ int main(int argc, char* argv)
     //}
 
 
-    while (cmd >= 0)
+    while (cmd != 0)
     {
         cudaPrintNumbers();
 

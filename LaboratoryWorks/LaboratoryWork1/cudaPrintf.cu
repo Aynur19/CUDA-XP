@@ -7,7 +7,7 @@
 #include <cuda_runtime.h>
 #include <device_launch_parameters.h>
 
-#include "..\_common\deviceQuery.h"
+#include "../../_common/deviceQuery.h"
 
 using namespace std;
 
@@ -354,6 +354,8 @@ extern "C" void cudaPrintNumbers()
 
     switch (dev)
     {
+        case 0:
+            break;
         case 3:
             getDeviceInfo();
             break;

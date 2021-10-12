@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 #include "chapter3.h"
 
 int main(int argc, char* argv[]) {
@@ -11,6 +9,7 @@ int main(int argc, char* argv[]) {
 	printf("  1: Building a table by function values with a given step\n");
 	printf("  2: Square Matrix Transposing\n");
 	printf("  3: Square Matrix Multiplication\n");
+	printf("  4: The Problem of N Bodies\n");
 
 
 	printf("Enter the command: ");
@@ -36,6 +35,10 @@ int main(int argc, char* argv[]) {
 			}
 			case 3: {
 				cuSquareMatricesMultiplication();
+				break;
+			}
+			case 4: {
+				cuIntegrateBodies();
 				break;
 			}
 			default: {
