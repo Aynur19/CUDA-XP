@@ -1,7 +1,8 @@
 #include "helper.cuh"
+#include "helper.h"
 
-void gpuTimeMeasuring(void (*gpuComputedMethod)(unsigned int verbose), unsigned int iters, unsigned int verbose) {
-	printf("====================   GPU COMPUTING   ====================\n");
+void gpuTimeMeasuring(void (*gpuComputedMethod)(int argc, char* argv[]), unsigned int iters, int argc, char* argv[]) {
+    printf("====================   GPU COMPUTING   ====================\n");
     float curTimeGPU = 0.0f, timeGPU = 0.0f;
 
     for (int i = 0; i < iters; i++)
@@ -14,7 +15,7 @@ void gpuTimeMeasuring(void (*gpuComputedMethod)(unsigned int verbose), unsigned 
         cudaEventCreate(&stop);
         cudaEventRecord(start, 0);
 
-        (*gpuComputedMethod)(verbose);
+        (*gpuComputedMethod)(argc, argv);
 
         cudaEventRecord(stop, 0);
         cudaEventSynchronize(stop);

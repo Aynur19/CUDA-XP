@@ -7,7 +7,7 @@
 
 #include "helper_cuda.h"
 
-void gpuTimeMeasuring(void (*gpuComputedMethod)(unsigned int verbose), unsigned int iters, unsigned int verbose);
+void gpuTimeMeasuring(void (*gpuComputedMethod)(int argc, char* argv[]), unsigned int iters, int argc, char* argv[]);
 
 #endif // !__HELPER_CUH__
 

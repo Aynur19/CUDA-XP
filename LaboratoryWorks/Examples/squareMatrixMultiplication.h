@@ -6,10 +6,10 @@
 #define N 4
 #define BLOCK_SIZE 2
 
-void squareMatrixMultiplicationCPU(unsigned int verbose);
+void squareMatrixMultiplicationCPU(int argc, char* argv[]);
 
-void squareMatrixMultiplicationGPU_Shared(unsigned int verbose);
+void squareMatrixMultiplicationGPU_Shared(int argc, char* argv[]);
 
-void squareMatrixMultiplicationGPU_Global(unsigned int verbose);
+void squareMatrixMultiplicationGPU_Global(int argc, char* argv[]);
 
 #endif // !__SQUARE_MATRIX_MULTIPLICATION__

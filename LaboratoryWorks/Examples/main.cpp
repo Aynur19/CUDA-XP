@@ -3,16 +3,20 @@
 #include "squareMatrixMultiplication.h"
 
 
-void (*cpuComputedMethod)(unsigned int verbose) = NULL;
+void (*cpuComputedMethod)(int argc, char* argv[]) = NULL;
 
-void (*gpuComputedMethod)(unsigned int verbose) = NULL;
+void (*gpuComputedMethod)(int argc, char* argv[]) = NULL;
+
 
 void squareMatrixMultiplication(unsigned int iters, unsigned int verbose) {
+	char* argv[] = { "verbose", "0" };
+	int argc = 2;
+
 	printf("MATRIX MULTIPLICATION ON CPU\n");
 	
 	printf("****************************   CPU   ***************************\n");
 	cpuComputedMethod = &squareMatrixMultiplicationCPU;
-	cpuTimeMeasuring(cpuComputedMethod, iters, verbose);
+	cpuTimeMeasuring(cpuComputedMethod, 10, argc, argv);
 	printf("****************************   CPU   ***************************\n");
 
 	printf("\n\n");
@@ -20,14 +24,14 @@ void squareMatrixMultiplication(unsigned int iters, unsigned int verbose) {
 
 	printf("********************   CUDA GLOBAL MEMORY   ********************\n");
 	gpuComputedMethod = &squareMatrixMultiplicationGPU_Global;
-	gpuTimeMeasuring(gpuComputedMethod, iters, verbose);
+	gpuTimeMeasuring(gpuComputedMethod, 10, argc, argv);
 	printf("********************   CUDA GLOBAL MEMORY   ********************\n");
 
 	printf("\n\n");
 
 	printf("********************   CUDA SHARED MEMORY   ********************\n");
 	gpuComputedMethod = &squareMatrixMultiplicationGPU_Shared;
-	gpuTimeMeasuring(gpuComputedMethod, iters, verbose);
+	gpuTimeMeasuring(gpuComputedMethod, 10, argc, argv);
 	printf("********************   CUDA SHARED MEMORY   ********************\n");
 }
 

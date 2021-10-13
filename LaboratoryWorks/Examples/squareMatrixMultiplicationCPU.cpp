@@ -1,6 +1,10 @@
 #include "squareMatrixMultiplication.h"
 
-void squareMatrixMultiplicationCPU(unsigned int verbose) {
+//using namespace std;
+
+void squareMatrixMultiplicationCPU(int argc, char* argv[]) {
+	unsigned int verbose = getValueFromArgv<unsigned int>("verbose", 0, argc, argv);
+
 	float* matrixA = new float[N * N];
 	float* matrixB = new float[N * N];
 	float* matrixC = new float[N * N];

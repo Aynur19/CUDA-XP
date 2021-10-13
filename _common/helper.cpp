@@ -1,6 +1,6 @@
 #include "helper.h"
 
-void cpuTimeMeasuring(void (*cpuComputedMethod)(unsigned int verbose), unsigned int iters, unsigned int verbose) {
+void cpuTimeMeasuring(void (*cpuComputedMethod)(int argc, char* argv[]), unsigned int iters, int argc, char* argv[]) {
     printf("====================   CPU COMPUTING   ====================\n");
     int start = 0, time = 0;
     float curTimeCPU = 0.0f, timeCPU = 0.0f;
@@ -9,7 +9,7 @@ void cpuTimeMeasuring(void (*cpuComputedMethod)(unsigned int verbose), unsigned 
     {
         start = clock();
 
-        (*cpuComputedMethod)(verbose);
+        (*cpuComputedMethod)(argc, argv);
 
         time = clock() - start;
         curTimeCPU = time / 1.0;

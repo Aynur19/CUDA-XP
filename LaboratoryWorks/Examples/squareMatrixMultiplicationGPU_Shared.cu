@@ -38,7 +38,9 @@ __global__ void squareMtrixMultiplicationSharedKernel(float* matrixA, float* mat
 	matrixC[n * BLOCK_SIZE * blockY + BLOCK_SIZE * blockX + n * threadY + threadX] = sum;
 }
 
-void squareMatrixMultiplicationGPU_Shared(unsigned int verbose) {
+void squareMatrixMultiplicationGPU_Shared(int argc, char* argv[]) {
+	unsigned int verbose = getValueFromArgv<unsigned int>("verbose", 0, argc, argv);
+
 	float* matrixA = new float[N * N];
 	float* matrixB = new float[N * N];
 	float* matrixC = new float[N * N];

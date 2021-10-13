@@ -23,7 +23,9 @@ __global__ void squareMatrixMultiplicationGlobalKernel(float *matrixA, float *ma
 	matrixC[indexC + n * threadY + threadX] = sum;
 }
 
-void squareMatrixMultiplicationGPU_Global(unsigned int verbose) {
+void squareMatrixMultiplicationGPU_Global(int argc, char* argv[]) {
+	unsigned int verbose = getValueFromArgv<unsigned int>("verbose", 0, argc, argv);
+
 	printf("BLOCK_SIZE = %d", BLOCK_SIZE);
 	float *matrixA = new float[N * N];
 	float *matrixB = new float[N * N];
