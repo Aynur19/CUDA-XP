@@ -77,13 +77,20 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="matrixMultiplicationGlobal.cu" />
+    <CudaCompile Include="..\..\_common\helper.cu" />
+    <CudaCompile Include="squareMatrixMultiplicationGPU_Global.cu" />
+    <CudaCompile Include="squareMatrixMultiplicationGPU_Shared.cu" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\_common\helper.h" />
+    <ClInclude Include="..\..\_common\helper.cuh" />
+    <ClInclude Include="..\..\_common\helper.h" />
+    <ClInclude Include="..\..\_common\helper_cuda.h" />
+    <ClInclude Include="squareMatrixMultiplication.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\_common\helper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="squareMatrixMultiplicationCPU.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
