@@ -1,7 +1,14 @@
 #include "helper.h"
 
-void cpuTimeMeasuring(void (*cpuComputedMethod)(int argc, char* argv[]), unsigned int iters, int argc, char* argv[]) {
-    printf("====================   CPU COMPUTING   ====================\n");
+/// <summary>
+/// Decorator for measuring the execution time of calculations on the CPU.
+/// </summary>
+/// <param name="cpuComputedMethod">CPU computation method reference.</param>
+/// <param name="iters">Number of passes.</param>
+/// <param name="argsIn">Parameters passed to the evaluation function</param>
+/// <returns>Computation results.</returns>
+argsVector cpuTimeMeasuring(argsVector(*cpuComputedMethod)(argsVector argsIn), unsigned int iters, argsVector argsIn) {
+    argsVector argsOut;
     int start = 0, time = 0;
     float curTimeCPU = 0.0f, timeCPU = 0.0f;
 
@@ -9,7 +16,7 @@ void cpuTimeMeasuring(void (*cpuComputedMethod)(int argc, char* argv[]), unsigne
     {
         start = clock();
 
-        (*cpuComputedMethod)(argc, argv);
+        argsOut = (*cpuComputedMethod)(argsIn);
 
         time = clock() - start;
         curTimeCPU = time / 1.0;
@@ -22,10 +29,11 @@ void cpuTimeMeasuring(void (*cpuComputedMethod)(int argc, char* argv[]), unsigne
 
     printf("=======================   CPU AVG   +======================\n");
     printf("  Iterations: %d\n", iters);
-    printf("  CPU ALL COMPUTE TIME: %.3f milliseconds \n", timeCPU);
-    printf("  CPU AVG COMPUTE TIME: %.3f milliseconds \n", timeCPU / iters);
+    printf("  CPU ALL COMPUTE TIME: %.5f milliseconds \n", timeCPU);
+    printf("  CPU AVG COMPUTE TIME: %.5f milliseconds \n", timeCPU / iters);
     printf("=======================   CPU AVG   =======================\n");
-    printf("====================   CPU COMPUTING   ====================\n");
+
+    return argsOut;
 }
 
 void matrixFillIndices(float* matrix, int nRows, int nCols) {
