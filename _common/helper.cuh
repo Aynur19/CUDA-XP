@@ -13,34 +13,29 @@
 using namespace std;
 
 #pragma region Get ThreadID
-// 1D grid of 1D blocks
-__device__ int getGlobalIdx_1D_1D();
 
-// 1D grid of 2D blocks
-__device__ int getGlobalIdx_1D_2D();
+__device__ int getGlobalIdx_1D_1D(); // 1D grid of 1D blocks
 
-// 1D grid of 3D blocks
-__device__ int getGlobalIdx_1D_3D();
+__device__ int getGlobalIdx_1D_2D(); // 1D grid of 2D blocks
 
-// 2D grid of 1D blocks
-__device__ int getGlobalIdx_2D_1D();
+__device__ int getGlobalIdx_1D_3D(); // 1D grid of 3D blocks
 
-// 2D grid of 2D blocks
-__device__ int getGlobalIdx_2D_2D();
+__device__ int getGlobalIdx_2D_1D(); // 2D grid of 1D blocks
 
-// 2D grid of 3D blocks
-__device__ int getGlobalIdx_2D_3D();
+__device__ int getGlobalIdx_2D_2D(); // 2D grid of 2D blocks
 
-// 3D grid of 1D blocks
-__device__ int getGlobalIdx_3D_1D();
+__device__ int getGlobalIdx_2D_3D(); // 2D grid of 3D blocks
 
-// 3D grid of 2D blocks
-__device__ int getGlobalIdx_3D_2D();
+__device__ int getGlobalIdx_3D_1D(); // 3D grid of 1D blocks
 
-// 3D grid of 3D blocks
-__device__ int getGlobalIdx_3D_3D();
+__device__ int getGlobalIdx_3D_2D(); // 3D grid of 2D blocks
+
+__device__ int getGlobalIdx_3D_3D(); // 3D grid of 3D blocks
 #pragma endregion
 
+/// <summary>
+/// Метод-обертка, для вычисления времени затраченного на выполнения метода на GPU.
+/// </summary>
 argsVector gpuTimeMeasuring(argsVector (*gpuComputedMethod)(argsVector argsIn), unsigned int iters, argsVector argsIn);
 
 #endif // !__HELPER_CUH__

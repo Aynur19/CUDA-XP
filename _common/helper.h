@@ -29,6 +29,9 @@ template<typename T> char* toChars(T param) {
     return convertedParam;
 }
 
+/// <summary>
+/// Метод получения типизированной переменной из вектора строк.
+/// </summary>
 template<typename T> T getValueFromArgs(std::string paramName, T defaultValue, argsVector args) {
 	T param = defaultValue;
 	for (int i = 0; i < args.size(); i++) {
@@ -72,11 +75,14 @@ template<typename T> T getValueFromArgs(std::string paramName, T defaultValue, a
 	return param;
 }
 
+/// <summary>
+/// Метод обертка для вычисления времени, затраченного на выполнение метода на CPU.
+/// </summary>
 argsVector cpuTimeMeasuring(argsVector(*cpuComputedMethod)(argsVector argsIn), unsigned int iters, argsVector argsIn);
+
 
 void matrixFillIndices(float* matrix, int nRows, int nCols);
 
 void matrixPrint(float* matrix, int nRows, int nCols);
-
 
 #endif // !__HELPER_H__
