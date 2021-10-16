@@ -55,6 +55,7 @@
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -77,7 +78,21 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="kernel.cu" />
+    <CudaCompile Include="..\..\_common\helper.cu" />
+    <CudaCompile Include="rootEquationFindingGPU_Global.cu" />
+    <CudaCompile Include="rootEquationFindingGPU_Shared.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\_common\helper.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="rootEquationFinding.cpp" />
+    <ClCompile Include="rootEquationFindingCPU.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\_common\helper.cuh" />
+    <ClInclude Include="..\..\_common\helper.h" />
+    <ClInclude Include="..\..\_common\helper_cuda.h" />
+    <ClInclude Include="rootEquationFinding.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
