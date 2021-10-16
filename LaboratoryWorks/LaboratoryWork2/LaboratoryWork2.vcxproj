@@ -91,7 +91,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\_common\helper.cuh" />
     <ClInclude Include="..\..\_common\helper.h" />
-    <ClInclude Include="..\..\_common\helper_cuda.h" />
     <ClInclude Include="rootEquationFinding.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

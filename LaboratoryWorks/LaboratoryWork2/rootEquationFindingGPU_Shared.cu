@@ -5,15 +5,14 @@
 /// </summary>
 __global__ void rootEquationFindingSharedKernal(float* devArrayX, float startX, float stepX) {
 	int threadId = getGlobalIdx_2D_2D();
-	stepX *= threadId;
-	float currentX = startX + stepX;
-
-	__shared__ float sharedA[THREADS];
+	__shared__ float sharedA[THREADS][2];
 	int sharedId = (threadIdx.x + 1) * (threadIdx.y + 1) - 1;
-	sharedA[sharedId] = 1 / (sin(M_PI * currentX / 180));
 
-	if (fabs(sharedA[sharedId] - currentX) <= EPS) {
-		devArrayX[0] = currentX;
+	sharedA[sharedId][0] = startX + stepX * threadId;
+	sharedA[sharedId][1] = 1 / (sin(M_PI * sharedA[sharedId][0] / 180));
+
+	if (fabs(sharedA[sharedId][1] - sharedA[sharedId][0]) <= EPS) {
+		devArrayX[0] = sharedA[sharedId][0];
 	}
 }
 
@@ -27,8 +26,8 @@ argsVector rootEquationFindingGPU_Shared(argsVector argsIn) {
 	dim3 gridDimension = std::get<0>(params);
 	stepX = getSignedStep(startX, endX, std::get<1>(params));
 
-	printf("Grid Dimension: (%d, %d, %d)\t Block Dimension: (%d, %d, %d)\n",
-		gridDimension.x, gridDimension.y, gridDimension.z, BLOCK_DIM.x, BLOCK_DIM.y, BLOCK_DIM.z);
+	printf("Grid Dimension: (%d, %d, %d)\t Block Dimension: (%d, %d, %d)\tstepX: %.9f\n",
+		gridDimension.x, gridDimension.y, gridDimension.z, BLOCK_DIM.x, BLOCK_DIM.y, BLOCK_DIM.z, stepX);
 
 	float* arrayX = new float[1];
 	float* devArrayX;

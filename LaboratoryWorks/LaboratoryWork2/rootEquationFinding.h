@@ -6,7 +6,6 @@
 #include <tuple>
 
 #define EPS 0.00001
-
 #define BLOCK_DIM dim3(16, 16)
 #define THREADS 16 * 16
 

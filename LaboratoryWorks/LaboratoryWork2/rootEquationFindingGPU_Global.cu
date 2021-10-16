@@ -25,8 +25,8 @@ argsVector rootEquationFindingGPU_Global(argsVector argsIn) {
 	dim3 gridDimension = std::get<0>(params);
 	stepX = getSignedStep(startX, endX, std::get<1>(params));
 
-	printf("Grid Dimension: (%d, %d, %d)\t Block Dimension: (%d, %d, %d)\n",
-		gridDimension.x, gridDimension.y, gridDimension.z, BLOCK_DIM.x, BLOCK_DIM.y, BLOCK_DIM.z);
+	printf("Grid Dimension: (%d, %d, %d)\t Block Dimension: (%d, %d, %d)\tstepX: %.9f\n",
+		gridDimension.x, gridDimension.y, gridDimension.z, BLOCK_DIM.x, BLOCK_DIM.y, BLOCK_DIM.z, stepX);
 
 	int nBytes = sizeof(float);
 	float* arrayX = new float[1];

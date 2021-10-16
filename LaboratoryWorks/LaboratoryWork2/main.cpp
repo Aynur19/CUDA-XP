@@ -31,9 +31,9 @@ int main(int argc, char* argv[])
 {
 	std::vector<std::string> args;
 
-	args.push_back("--startX 7.0");
-	args.push_back("--endX 10.");
-	args.push_back("--stepX 0.00001");
+	args.push_back("--startX 0.0");
+	args.push_back("--endX 10.0");
+	args.push_back("--stepX 0.000001");
 
 	rootEquationFinding(args);
 
