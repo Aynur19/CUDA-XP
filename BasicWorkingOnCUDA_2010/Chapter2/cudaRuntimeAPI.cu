@@ -1,16 +1,12 @@
-﻿// Сложение векторов через CUDA runtime API
-#include <cuda_runtime.h>
-#include <device_launch_parameters.h>
+﻿#include "chapter2.h"
 
-#include "chapter2.h"
-
-__global__ void __cuVectorAdd(float* vec1, float* vec2, float* vecSum) {
+__global__ void vectorAddKernel(float* vec1, float* vec2, float* vecSum) {
 	int index = threadIdx.x + blockIdx.x * blockDim.x;
 
 	vecSum[index] = vec1[index] + vec2[index];
 }
 
-extern "C" void cuVectorAdd_RAPI(const int blockSize, const int numBlocks, const int numItems)
+ void vectorAdd_RAPI(const int blockSize, const int numBlocks, const int numItems)
 {
 	// Выбор первого GPU для работы
 	cudaSetDevice(0);
@@ -21,8 +17,8 @@ extern "C" void cuVectorAdd_RAPI(const int blockSize, const int numBlocks, const
 	float* vecSum = new float[numItems];
 
 	// Инициализация входных массивов
-	randomInit(vec1, numItems);
-	randomInit(vec2, numItems);
+	arrayRandomInit(vec1, numItems);
+	arrayRandomInit(vec2, numItems);
 
 	// Выделение памяти GPU
 	float* vecDev1 = NULL;
@@ -38,13 +34,13 @@ extern "C" void cuVectorAdd_RAPI(const int blockSize, const int numBlocks, const
 	cudaMemcpy(vecDev2, vec2, numItems * sizeof(float), cudaMemcpyHostToDevice);
 
 	// Запуск ядра
-	__cuVectorAdd<<<numBlocks, blockSize>>>(vecDev1, vecDev2, vecSumDev);
+	vectorAddKernel<<<numBlocks, blockSize>>>(vecDev1, vecDev2, vecSumDev);
 
 	// Копирование результата в память CPU
 	cudaMemcpy((void*)vecSum, vecSumDev, numItems * sizeof(float), cudaMemcpyDeviceToHost);
 
 	// Проверка результата
-	vecAddValidate(vec1, vec2, vecSum, numItems);
+	vectorAddValidate(vec1, vec2, vecSum, numItems);
 
 	// Освобождение выделенной памяти
 	delete[] vec1;

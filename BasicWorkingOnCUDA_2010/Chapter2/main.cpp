@@ -1,10 +1,4 @@
-#include <stdio.h>
-//#include "chapter2.h"
-
-extern "C" void cuVectorAdd_RAPI(const int blockSize, const int numBlocks, const int numItems);
-////extern "C" void cuVectorAdd_DAPI(const int blockSize, const int numBlocks, const int numItems);
-//
-extern "C" void cuGetGpuFeatures();
+#include "chapter2.h"
 
 int main(int argc, char* argv[]) {
 
@@ -21,7 +15,6 @@ int main(int argc, char* argv[]) {
 
 	while (cmd != 0)
 	{
-
 		switch (cmd)
 		{
 			case 0:
@@ -31,12 +24,12 @@ int main(int argc, char* argv[]) {
 				const unsigned int numBlocks = 3;
 				const unsigned int numItems = numBlocks * blockSize;
 
-				cuVectorAdd_RAPI(blockSize, numBlocks, numItems);
+				vectorAdd_RAPI(blockSize, numBlocks, numItems);
 				//cuVectorAdd_DAPI(blockSize, numBlocks, numItems);
 				break;
 			}
 			case 2: {
-				cuGetGpuFeatures();
+				getGpuFeatures();
 				break;
 			}
 			default: {

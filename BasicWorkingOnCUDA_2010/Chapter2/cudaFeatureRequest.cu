@@ -1,10 +1,6 @@
-#include <stdio.h>
-#include <cuda_runtime.h>
-#include <device_launch_parameters.h>
-
 #include "chapter2.h"
 
-extern "C" void cuGetGpuFeatures() {
+ void getGpuFeatures() {
 	int deviceCount;
 	cudaDeviceProp devProp;
 

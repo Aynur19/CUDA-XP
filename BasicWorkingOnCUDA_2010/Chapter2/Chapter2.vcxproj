@@ -84,6 +84,7 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <CudaCompile Include="..\..\_common\helper.cu" />
     <CudaCompile Include="cudaDriverAPI.cu">
       <FileType>Document</FileType>
       <CudaRuntime Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Static</CudaRuntime>
@@ -96,17 +97,17 @@
     </CudaCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\_common\helper.cpp" />
+    <ClCompile Include="..\..\_common\helper.cpp" />
+    <ClCompile Include="chapter2.cpp" />
     <ClCompile Include="main.cpp">
       <AdditionalModuleDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </AdditionalModuleDependencies>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\_common\helper.h" />
+    <ClInclude Include="..\..\_common\deviceQuery.h" />
+    <ClInclude Include="..\..\_common\helper.cuh" />
+    <ClInclude Include="..\..\_common\helper.h" />
     <ClInclude Include="chapter2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
