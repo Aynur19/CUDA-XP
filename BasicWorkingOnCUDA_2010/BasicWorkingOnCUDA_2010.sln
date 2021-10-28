@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_common", "_common", "{092C
 		_common\helper.h = _common\helper.h
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "numberFactorization", "numberFactorization\numberFactorization.vcxproj", "{597C530C-DD7C-4C57-8F38-A8724A8695B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -27,6 +29,10 @@ Global
 		{83A56577-62F6-4661-874B-FB0534B57428}.Debug|x64.Build.0 = Debug|x64
 		{83A56577-62F6-4661-874B-FB0534B57428}.Release|x64.ActiveCfg = Release|x64
 		{83A56577-62F6-4661-874B-FB0534B57428}.Release|x64.Build.0 = Release|x64
+		{597C530C-DD7C-4C57-8F38-A8724A8695B7}.Debug|x64.ActiveCfg = Debug|x64
+		{597C530C-DD7C-4C57-8F38-A8724A8695B7}.Debug|x64.Build.0 = Debug|x64
+		{597C530C-DD7C-4C57-8F38-A8724A8695B7}.Release|x64.ActiveCfg = Release|x64
+		{597C530C-DD7C-4C57-8F38-A8724A8695B7}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
