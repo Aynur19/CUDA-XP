@@ -16,6 +16,8 @@ typedef std::vector<std::string> argsVector;
 
 #define MATRIX_INDEX(row, col, columnsInRow) ((col) + (row) * columnsInRow)
 
+#define EPS 0.00001f
+
 template<typename T> char* toChars(T param) {
     char convertedParam[sizeof(T)];
     if (typeid(param).name() == "float") {
@@ -29,9 +31,6 @@ template<typename T> char* toChars(T param) {
     return convertedParam;
 }
 
-/// <summary>
-/// Метод получения типизированной переменной из вектора строк.
-/// </summary>
 template<typename T> T getValueFromArgs(std::string paramName, T defaultValue, argsVector args) {
 	T param = defaultValue;
 	for (int i = 0; i < args.size(); i++) {
@@ -76,13 +75,14 @@ template<typename T> T getValueFromArgs(std::string paramName, T defaultValue, a
 }
 
 /// <summary>
-/// Метод обертка для вычисления времени, затраченного на выполнение метода на CPU.
+/// Decorator for calculating the time taken to execute the method on the CPU.
 /// </summary>
 argsVector cpuTimeMeasuring(argsVector(*cpuComputedMethod)(argsVector argsIn), unsigned int iters, argsVector argsIn);
-
 
 void matrixFillIndices(float* matrix, int nRows, int nCols);
 
 void matrixPrint(float* matrix, int nRows, int nCols);
+
+void arrayRandomInit(float* randArray, int n);
 
 #endif // !__HELPER_H__

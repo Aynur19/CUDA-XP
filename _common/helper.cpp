@@ -55,3 +55,11 @@ void matrixPrint(float* matrix, int nRows, int nCols) {
     }
     printf("\n==================================================\n");
 }
+
+void arrayRandomInit(float* randArray, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        randArray[i] = rand() / (float)RAND_MAX;
+    }
+}
