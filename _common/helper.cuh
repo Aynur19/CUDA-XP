@@ -33,8 +33,10 @@ __device__ int getGlobalIdx_3D_2D(); // 3D grid of 2D blocks
 __device__ int getGlobalIdx_3D_3D(); // 3D grid of 3D blocks
 #pragma endregion
 
+void getGpuInfo();
+
 /// <summary>
-/// Метод-обертка, для вычисления времени затраченного на выполнения метода на GPU.
+/// Decorator for calculating the time spent on the execution of the method on the GPU.
 /// </summary>
 argsVector gpuTimeMeasuring(argsVector (*gpuComputedMethod)(argsVector argsIn), unsigned int iters, argsVector argsIn);
 

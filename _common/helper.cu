@@ -73,6 +73,57 @@ __device__ int getGlobalIdx_3D_3D() {
 #pragma endregion
 
 
+void getGpuInfo() {
+    cudaDeviceProp prop;
+
+    int count;
+    cudaGetDeviceCount(&count);
+    
+    for (int i = 0; i < count; i++) {
+        cudaGetDeviceProperties(&prop, i);
+        printf("=== GENERAL INFORMATION ABOUT DEVICE %d ===\n", i);
+        printf("  Name:                               %s\n", prop.name);
+        printf("  Computing capabilities:             %d.%d\n", prop.major, prop.minor);
+        printf("  Clock frequency (KHz):              %d\n", prop.clockRate);
+        
+        if (prop.deviceOverlap) {
+            printf("  Copy overlap:                       Allowed\n");
+        }
+        else {
+            printf("  Copy overlap:                       Not allowed\n");
+        }
+
+        if (prop.kernelExecTimeoutEnabled) {
+            printf("  Kernel execution timeout:           Enabled\n");
+        }
+        else {
+            printf("  Kernel execution timeout:           Disabled\n");
+        }
+        printf("\n");
+
+        printf("  *** Memory information for device %d ***\n", i);
+        printf("    Total Global Memory (Bytes):      %lld\n", prop.totalGlobalMem);
+        printf("    Total Constant Memory (Bytes):    %lld\n", prop.totalConstMem);
+        printf("    Maximum pitch (Byte):             %lld\n", prop.memPitch);
+        printf("    Alignment of textures (Bytes):    %lld\n", prop.textureAlignment);
+        printf("\n");
+
+        printf("  *** Multiprocessor information for the device %d ***\n", i);
+        printf("    Number of multiprocessors:        %d\n", prop.multiProcessorCount);
+        printf("    Shared memory per MP (Byte):      %lld\n", prop.sharedMemPerMultiprocessor);
+        printf("    Registers (32-bit) per MP:        %d\n", prop.regsPerMultiprocessor);
+        printf("    Maximum blocks per MP:            %d\n", prop.maxBlocksPerMultiProcessor);
+        printf("    Maximum threads per MP:           %d\n", prop.maxThreadsPerMultiProcessor);
+        
+        printf("    Maximum grid size:                (%d, %d, %d)\n", prop.maxGridSize[0], prop.maxGridSize[1], prop.maxGridSize[2]);
+        printf("    Maximum threads per dimension:    (%d, %d, %d)\n", prop.maxThreadsDim[0], prop.maxThreadsDim[1], prop.maxThreadsDim[2]);
+        printf("    Shared memory per block (Bytes):  %lld\n", prop.sharedMemPerBlock);
+        printf("    Registers (32-bit) per block:     %ld\n", prop.regsPerBlock);
+        printf("    Maximum threads per block:        %d\n", prop.maxThreadsPerBlock);
+        printf("=====================================================================\n\n");
+    }
+}
+
 argsVector gpuTimeMeasuring(argsVector(*gpuComputedMethod)(argsVector argsIn), unsigned int iters, argsVector argsIn) {
     argsVector argsOut;
     
