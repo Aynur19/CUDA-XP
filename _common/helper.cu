@@ -72,7 +72,6 @@ __device__ int getGlobalIdx_3D_3D() {
 }
 #pragma endregion
 
-
 void getGpuInfo() {
     cudaDeviceProp prop;
 
@@ -122,6 +121,18 @@ void getGpuInfo() {
         printf("    Maximum threads per block:        %d\n", prop.maxThreadsPerBlock);
         printf("=====================================================================\n\n");
     }
+}
+
+int getDeviceByProps(cudaDeviceProp prop) {
+    int dev;
+
+    cudaGetDevice(&dev);
+    printf("Current CUDA device ID: %d\n", dev);
+
+    cudaChooseDevice(&dev, &prop);
+    printf("ID of the CUDA device closest to the specified properties: %d\n", dev);
+
+    return dev;
 }
 
 argsVector gpuTimeMeasuring(argsVector(*gpuComputedMethod)(argsVector argsIn), unsigned int iters, argsVector argsIn) {

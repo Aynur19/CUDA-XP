@@ -35,6 +35,8 @@ __device__ int getGlobalIdx_3D_3D(); // 3D grid of 3D blocks
 
 void getGpuInfo();
 
+int getDeviceByProps(cudaDeviceProp prop);
+
 /// <summary>
 /// Decorator for calculating the time spent on the execution of the method on the GPU.
 /// </summary>
