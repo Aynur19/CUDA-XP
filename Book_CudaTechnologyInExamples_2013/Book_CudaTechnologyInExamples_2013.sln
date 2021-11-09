@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Chapter3", "Chapter3\Chapter3.vcxproj", "{B9FAFF60-1FCB-4731-90B0-690258E79103}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_common", "_common", "{E1036DD9-C6EB-425D-9592-3AF44FD88A0B}"
+	ProjectSection(SolutionItems) = preProject
+		..\_common\helper.cpp = ..\_common\helper.cpp
+		..\_common\helper.cu = ..\_common\helper.cu
+		..\_common\helper.cuh = ..\_common\helper.cuh
+		..\_common\helper.h = ..\_common\helper.h
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Chapter3_Introduction", "Chapter3_Introduction\Chapter3_Introduction.vcxproj", "{450E463E-ABA7-487B-9168-1C3693893EE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +19,10 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B9FAFF60-1FCB-4731-90B0-690258E79103}.Debug|x64.ActiveCfg = Debug|x64
-		{B9FAFF60-1FCB-4731-90B0-690258E79103}.Debug|x64.Build.0 = Debug|x64
-		{B9FAFF60-1FCB-4731-90B0-690258E79103}.Release|x64.ActiveCfg = Release|x64
-		{B9FAFF60-1FCB-4731-90B0-690258E79103}.Release|x64.Build.0 = Release|x64
+		{450E463E-ABA7-487B-9168-1C3693893EE6}.Debug|x64.ActiveCfg = Debug|x64
+		{450E463E-ABA7-487B-9168-1C3693893EE6}.Debug|x64.Build.0 = Debug|x64
+		{450E463E-ABA7-487B-9168-1C3693893EE6}.Release|x64.ActiveCfg = Release|x64
+		{450E463E-ABA7-487B-9168-1C3693893EE6}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
