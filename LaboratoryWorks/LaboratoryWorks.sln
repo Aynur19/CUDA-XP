@@ -20,6 +20,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LaboratoryWork2", "Laborato
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Examples", "Examples\Examples.vcxproj", "{ED995ABF-4E32-4877-BCDE-56EE18BFA550}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LaboratoryWork3", "LaboratoryWork3\LaboratoryWork3.vcxproj", "{B1B950FA-C6FE-4E2E-A668-E211A9E52D92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -38,6 +40,10 @@ Global
 		{ED995ABF-4E32-4877-BCDE-56EE18BFA550}.Debug|x64.Build.0 = Debug|x64
 		{ED995ABF-4E32-4877-BCDE-56EE18BFA550}.Release|x64.ActiveCfg = Release|x64
 		{ED995ABF-4E32-4877-BCDE-56EE18BFA550}.Release|x64.Build.0 = Release|x64
+		{B1B950FA-C6FE-4E2E-A668-E211A9E52D92}.Debug|x64.ActiveCfg = Debug|x64
+		{B1B950FA-C6FE-4E2E-A668-E211A9E52D92}.Debug|x64.Build.0 = Debug|x64
+		{B1B950FA-C6FE-4E2E-A668-E211A9E52D92}.Release|x64.ActiveCfg = Release|x64
+		{B1B950FA-C6FE-4E2E-A668-E211A9E52D92}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

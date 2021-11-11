@@ -23,8 +23,9 @@ __global__ void squareMatrixMultiplicationGlobalKernel(float *matrixA, float *ma
 	matrixC[indexC + n * threadY + threadX] = sum;
 }
 
-void squareMatrixMultiplicationGPU_Global(int argc, char* argv[]) {
-	unsigned int verbose = getValueFromArgv<unsigned int>("verbose", 0, argc, argv);
+argsVector squareMatrixMultiplicationGPU_Global(argsVector argsIn) {
+	argsVector argsOut;
+	unsigned int verbose = getValueFromArgs<unsigned int>("--verbose", 0, argsIn);
 
 	printf("BLOCK_SIZE = %d", BLOCK_SIZE);
 	float *matrixA = new float[N * N];
@@ -67,5 +68,7 @@ void squareMatrixMultiplicationGPU_Global(int argc, char* argv[]) {
 	if (verbose == 1) {
 		matrixPrint(matrixC, N, N);
 	}
+
+	return argsOut;
 }
 

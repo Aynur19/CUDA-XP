@@ -38,8 +38,9 @@ __global__ void squareMtrixMultiplicationSharedKernel(float* matrixA, float* mat
 	matrixC[n * BLOCK_SIZE * blockY + BLOCK_SIZE * blockX + n * threadY + threadX] = sum;
 }
 
-void squareMatrixMultiplicationGPU_Shared(int argc, char* argv[]) {
-	unsigned int verbose = getValueFromArgv<unsigned int>("verbose", 0, argc, argv);
+argsVector squareMatrixMultiplicationGPU_Shared(argsVector argsIn) {
+	argsVector argsOut;
+	unsigned int verbose = getValueFromArgs<unsigned int>("--verbose", 0, argsIn);
 
 	float* matrixA = new float[N * N];
 	float* matrixB = new float[N * N];
@@ -81,5 +82,7 @@ void squareMatrixMultiplicationGPU_Shared(int argc, char* argv[]) {
 	if (verbose == 1) {
 		matrixPrint(matrixC, N, N);
 	}
+
+	return argsOut;
 }
 

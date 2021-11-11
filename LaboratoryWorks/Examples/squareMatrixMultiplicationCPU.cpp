@@ -1,9 +1,8 @@
 #include "squareMatrixMultiplication.h"
 
-//using namespace std;
-
-void squareMatrixMultiplicationCPU(int argc, char* argv[]) {
-	unsigned int verbose = getValueFromArgv<unsigned int>("verbose", 0, argc, argv);
+argsVector squareMatrixMultiplicationCPU(argsVector argsIn) {
+	argsVector argsOut;
+	unsigned int verbose = getValueFromArgs<unsigned int>("--verbose", 0, argsIn);
 
 	float* matrixA = new float[N * N];
 	float* matrixB = new float[N * N];
@@ -30,5 +29,7 @@ void squareMatrixMultiplicationCPU(int argc, char* argv[]) {
 	if (verbose == 1) {
 		matrixPrint(matrixC, N, N);
 	}
+
+	return argsOut;
 }
 
