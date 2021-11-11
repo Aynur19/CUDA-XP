@@ -45,7 +45,7 @@ void matrixFillIndices(float* matrix, int nRows, int nCols) {
 }
 
 void matrixPrint(float* matrix, int nRows, int nCols) {
-    printf("\n==================================================\n");
+    //printf("\n==================================================\n");
     for (int i = 0; i < nRows; i++) {
         printf("[");
         for (int j = 0; j < nCols; j++) {
@@ -53,7 +53,7 @@ void matrixPrint(float* matrix, int nRows, int nCols) {
         }
         printf("]\n");
     }
-    printf("\n==================================================\n");
+    //printf("\n==================================================\n");
 }
 
 void arrayRandomInit(float* randArray, int n)
