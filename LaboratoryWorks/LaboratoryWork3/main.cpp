@@ -1,4 +1,4 @@
-#include "labWork3.h"
+  #include "labWork3.h"
 
 argsVector(*cpuComputedMethod)(argsVector argsIn) = NULL;
 
@@ -15,7 +15,7 @@ void option19_rootEquationFinding(argsVector argsIn) {
 	printf("\n");
 
 	printf("****************************   GPU   ***************************\n");
-	gpuComputedMethod = &option19_rootEquationFindingGPU;
+	gpuComputedMethod = &option19_rootEquationFindingGPU_Thrust;
 	gpuTimeMeasuring(gpuComputedMethod, 1, argsIn);
 	printf("****************************   GPU   ***************************\n");
 

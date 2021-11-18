@@ -1,6 +1,17 @@
 #include <curand_kernel.h>
 
+#include <thrust/random.h>
+#include <thrust/host_vector.h>
+#include <thrust/device_vector.h>
+#include <thrust/transform.h>
+#include <thrust/iterator/counting_iterator.h>
+#include <thrust/copy.h>
+#include <thrust/sequence.h>
+
 #include "labWork3.h"
+
+#define N 4096
+
 
 __host__ __device__ float getEquationValue_Option19(float x) {
     return 0.17 * powf(x, 3.0) - 0.57 * powf(x, 2.0) - 1.6 * x + 3.7;
@@ -50,8 +61,62 @@ argsVector option19_rootEquationFindingGPU(argsVector argsIn) {
 
     printf("x = %.7f\n", result[0]);
     printf("y = %.7f\n", result[1]);
-    checkRootEquationFinding(result[0]);
     
     argsOut.push_back("--root " + std::to_string(result[0]));
+    return argsOut;
+}
+
+
+struct getFuncValues
+{
+    float leftX, deltaX;
+
+    __host__ __device__ getFuncValues(float _leftX = 0.f, float _deltaX = 0.01f)
+        : leftX(_leftX), deltaX(_deltaX) {};
+
+    __host__ __device__ float2 operator()(const unsigned int n) const
+    {
+        float2 xy;
+
+        xy.x = leftX + deltaX * n;
+        xy.y = getEquationValue_Option19(xy.x);
+
+        return xy;
+    }
+};
+
+struct isRoot
+{
+    const float eps;
+    isRoot(float _eps) : eps(_eps) {}
+
+    __device__ bool operator()(const float2& xy) {
+        if (eps >= fabs(xy.y)) {
+            printf("x: %.7f \t %.7f \n", xy.x, xy.y);
+            return true;
+        }
+
+        return false;
+    }
+};
+
+argsVector option19_rootEquationFindingGPU_Thrust(argsVector argsIn) {
+    argsVector argsOut;
+
+    float leftX = getValueFromArgs<float>("--startX", -10.0, argsIn);
+    float rightX = getValueFromArgs<float>("--endX", 10.0, argsIn);
+
+    float deltaX = fabs(rightX - leftX) / (N * N);
+
+    thrust::host_vector<float2> numbersXH(N * N);
+
+    thrust::device_vector<float2> numbersXD = numbersXH;
+    thrust::device_vector<float2> numbersYD(N * N);
+
+    thrust::counting_iterator<unsigned int> index_sequence_begin(0);
+
+    thrust::transform(index_sequence_begin, index_sequence_begin + N * N, numbersXD.begin(), getFuncValues(leftX, deltaX));
+    thrust::copy_if(numbersXD.begin(), numbersXD.end(), numbersYD.begin(), isRoot(EPS));
+    numbersXH = numbersYD;
     return argsOut;
 }

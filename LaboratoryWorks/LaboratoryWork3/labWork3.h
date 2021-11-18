@@ -17,5 +17,7 @@ argsVector option19_rootEquationFindingCPU(argsVector argsIn);
 
 argsVector option19_rootEquationFindingGPU(argsVector argsIn);
 
+argsVector option19_rootEquationFindingGPU_Thrust(argsVector argsIn);
+
 
 #endif // !__LAB_WORK3_H__
